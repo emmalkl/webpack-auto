@@ -1,0 +1,24 @@
+问题：
+1.webpack是什么？
+  是一个现代 JavaScript 应用程序的静态模块打包工具。
+2.基本概念  入口/输出/loader/插件/模式/浏览器兼容性
+  入口起点(entry point)：指示 webpack 应该使用哪个模块，来作为构建其内部 依赖图(dependency graph) 的开始。
+                        进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的 。
+    可以在webpack.config.js里配置（ entry 属性，来指定一个（或多个）不同的入口起点。）
+        module.exports = {
+            entry: './path/to/my/entry/file.js'，          //入口
+            output: {                                      //输出
+                path: path.resolve(__dirname, 'dist'),       //bundle 生成到哪里 一般./dist文件夹内
+                filename: 'my-first-webpack.bundle.js'       //bundle 的名称
+            }，
+            module: {                                     //loader
+                rules: [
+              //test用于标识出应该被对应的loader进行转换的某个或某些文件。
+                   { test: /\.txt$/, use: 'raw-loader' }                                            
+                ]
+            }
+        };
+  输出：在哪里输出它所创建的 bundle，以及如何命名这些文件
+  loader： webpack 只能理解 JavaScript 和 JSON 文件。loader 让 webpack 能够去处理其他类型的文件，并将它
+           们转换为有效 模块，以供应用程序使用，以及被添加到依赖图中。
+  
